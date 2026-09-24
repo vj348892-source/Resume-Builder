@@ -38,7 +38,7 @@ Give me 3 tips to improve this resume. Keep it short and practical.`;
   
   try {
     const response = await genai.models.generateContent({
-      model: "gemini-flash-latest",
+      model: "gemini-2.5-flash",
       contents: userPrompt
     });
     
@@ -50,7 +50,7 @@ Give me 3 tips to improve this resume. Keep it short and practical.`;
   } catch (error) {
     console.log("AI Error:", error);
     res.json({
-      error: "Failed to get suggestions from AI"
+      error: error.message || "Failed to get suggestions from AI"
     });
   }
 });
