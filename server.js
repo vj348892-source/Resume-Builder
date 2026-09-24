@@ -38,7 +38,7 @@ Give me 3 tips to improve this resume. Keep it short and practical.`;
   
   try {
     const response = await genai.models.generateContent({
-      model: "gemini-3.6-flash",
+      model: "gemini-1.5-flash",
       contents: userPrompt
     });
     
