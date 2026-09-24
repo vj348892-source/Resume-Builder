@@ -2,17 +2,20 @@ require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const { GoogleGenAI } = require("@google/genai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Enable CORS for all incoming client origins
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname)));
+
 const genai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY
 });
-
-app.use(express.json());
-app.use(express.static(path.join(__dirname)));
 
 app.post("/api/improve-resume", async (req, res) => {
   const role = req.body.role;
@@ -21,10 +24,9 @@ app.post("/api/improve-resume", async (req, res) => {
   const skills = req.body.skills;
   
   if (!role && !about && !experience && !skills) {
-    res.json({
+    return res.status(400).json({
       error: "Please fill in some details first"
     });
-    return;
   }
   
   const userPrompt = `I want to build a resume for the role: ${role || "Any Role"}
@@ -44,12 +46,12 @@ Give me 3 tips to improve this resume. Keep it short and practical.`;
     
     const suggestion = response.text;
     
-    res.json({
+    return res.json({
       suggestion: suggestion
     });
   } catch (error) {
-    console.log("AI Error:", error);
-    res.json({
+    console.error("AI Server Error Detail:", error);
+    return res.status(500).json({
       error: error.message || "Failed to get suggestions from AI"
     });
   }
