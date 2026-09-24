@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="left-side">
+
+      <h1>Resume Builder</h1>
+      <p class="subtitle">Fill in your details and see it update on the right</p>
+
+      <form id="myForm">
+
+        <div class="form-part">
+          <h3>Personal Info</h3>
+
+          <div class="input-row">
+            <div class="input-box">
+              <label>Full Name</label>
+              <input type="text" id="fullName" placeholder="Your name">
+            </div>
+
+            <div class="input-box">
+              <label>Job Role</label>
+              <input type="text" id="jobRole" placeholder="e.g Web Developer">
+            </div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-box">
+              <label>Email</label>
+              <input type="email" id="emailField" placeholder="your email">
+            </div>
+
+            <div class="input-box">
+              <label>Phone</label>
+              <input type="text" id="phoneField" placeholder="+91 98765 43210">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-part">
+          <h3>About You</h3>
+          <textarea id="aboutMe" rows="3" placeholder="Tell something about yourself"></textarea>
+        </div>
+
+        <div class="form-part">
+          <h3>Skills</h3>
+          <input type="text" id="skillsList" placeholder="HTML, CSS, JavaScript, React">
+        </div>
+
+        <div class="form-part">
+          <h3>Experience</h3>
+          <textarea id="expField" rows="3" placeholder="Your work experience"></textarea>
+        </div>
+
+        <div class="form-part">
+          <h3>Projects</h3>
+          <textarea id="projectField" rows="3" placeholder="Projects you have done"></textarea>
+        </div>
+
+        <div class="form-part">
+          <h3>Education</h3>
+          <textarea id="eduField" rows="3" placeholder="Your degree, college, certifications"></textarea>
+        </div>
+
+        <div class="form-part">
+          <h3>Links</h3>
+
+          <div class="input-row">
+            <div class="input-box">
+              <label>LinkedIn</label>
+              <input type="url" id="linkedinLink" placeholder="https://linkedin.com/in/yourname">
+            </div>
+
+            <div class="input-box">
+              <label>Portfolio</label>
+              <input type="url" id="portfolioLink" placeholder="https://yourportfolio.com">
+            </div>
+          </div>
+        </div>
+
+        <button type="button" id="improveBtn" class="btn-improve">Get AI Suggestions</button>
+
+        <div id="suggestions" class="suggestion-box hidden">
+          <p class="suggestion-title">AI Tips</p>
+          <p id="suggestText">Click the button above to get tips</p>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="right-side">
+
+      <div class="preview-header">
+        <h2>Preview</h2>
+        <button id="pdfBtn" class="btn-pdf">Download PDF</button>
+      </div>
+
+      <div class="resume-area" id="resumeView">
+
+        <div class="resume-top">
+          <h1 id="rName">Your Name</h1>
+          <p id="rRole" class="job-role">Your Job Role</p>
+
+          <div class="contact-info">
+            <span id="rEmail">email@example.com</span>
+            <span id="rPhone">+91 98765 43210</span>
+          </div>
+
+          <div class="links-info">
+            <span id="rLinkedin">linkedin.com/in/name</span>
+            <span id="rPortfolio">portfolio.com</span>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <h3>About</h3>
+          <p id="rAbout">Write about yourself here</p>
+        </div>
+
+        <div class="resume-section">
+          <h3>Skills</h3>
+          <div id="rSkills" class="skills-container">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <h3>Experience</h3>
+          <p id="rExp">Your experience goes here</p>
+        </div>
+
+        <div class="resume-section">
+          <h3>Projects</h3>
+          <p id="rProjects">Your projects go here</p>
+        </div>
+
+        <div class="resume-section">
+          <h3>Education</h3>
+          <p id="rEducation">Your education goes here</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
